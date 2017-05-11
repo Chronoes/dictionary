@@ -1,0 +1,36 @@
+.search-results {
+  margin-top: 15px;
+
+  &-loader {
+    font-size: 0.8em;
+    left: 50%;
+    position: absolute;
+    top: 40%;
+    z-index: 1;
+  }
+
+  & .list-group {
+    transition: opacity 200ms ease-in-out;
+
+    &.loading {
+      opacity: 0.3;
+    }
+
+    & > .list-group-item {
+      align-items: flex-start;
+      flex-flow: column wrap;
+    }
+  }
+
+  & .word-header {
+    display: inline-flex;
+
+    & .word-title {
+      font-weight: 700;
+    }
+
+    & .word-pronounciation {
+      margin-left: 0.5rem;
+    }
+  }
+}

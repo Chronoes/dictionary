@@ -8,9 +8,9 @@ import createHistory from 'history/createBrowserHistory';
 import { ConnectedRouter as Router, routerMiddleware } from 'react-router-redux';
 import { Route } from 'react-router';
 
+import './index.scss';
 import reducers from './reducers';
 import { Home } from './pages';
-import './index.scss';
 
 
 const history = createHistory();

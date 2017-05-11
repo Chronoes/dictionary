@@ -11,17 +11,10 @@ export default class Api {
     .then(({ message, token }) => Promise.reject(new ApiError(message, token)));
   }
 
-  constructor(origin, prefix, options = {}) {
+  constructor(origin, prefix, options) {
     this.origin = origin;
     this.prefix = prefix;
-    this.defaultOptions = {
-      ...options,
-      headers: {
-        'Content-Type': 'application/json; charset=UTF-8;',
-        Accept: 'application/json; charset=UTF-8;',
-        ...options.headers,
-      },
-    };
+    this.delayedOptions = options;
   }
 
   constructUrl(resource, query = {}) {
@@ -31,11 +24,14 @@ export default class Api {
   }
 
   fetch(resource, options) {
+    const extraOptions = this.delayedOptions() || {};
     return fetch(this.constructUrl(resource, options.query), {
-      ...this.defaultOptions,
+      ...extraOptions,
       ...options,
       headers: {
-        ...this.defaultOptions.headers,
+        'Content-Type': 'application/json; charset=UTF-8;',
+        Accept: 'application/json; charset=UTF-8;',
+        ...extraOptions.headers,
         ...options.headers,
       },
     })

@@ -5,12 +5,12 @@ import { Map } from 'immutable';
 
 import * as searchActions from '../../actions/searchActions';
 
-import Search from '../../components/Search';
+import Search from './Search';
 
 function Home({ search, actions }) {
   return (
     <div className="container">
-      <h1>Search words</h1>
+      <h1>Sõnastiku otsing</h1>
       <Search results={search.get('results')} form={search.get('form')} actions={actions.search} />
     </div>
   );

@@ -2,8 +2,13 @@ import { fromJS as immutableJS, List } from 'immutable';
 
 const wordFormat = immutableJS({
   wordId: 0,
+  userId: 1,
+  langCode: 2,
+  wordTypeCode: 3,
   word: '',
-  description: '',
+  pronounciation: null,
+  declension: null,
+  description: null,
   translation: '',
   example: '',
 });
