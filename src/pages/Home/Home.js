@@ -5,7 +5,7 @@ import { Map } from 'immutable';
 
 import * as searchActions from '../../actions/searchActions';
 
-import Search from './Search';
+import Search from '../../components/Search';
 
 function Home({ search, actions }) {
   return (

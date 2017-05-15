@@ -1,5 +1,7 @@
 import { ApiError } from './Api';
 
+import searchJson from './mockData/search.json';
+
 const MIN_NETWORK_TIME = 20;
 const MAX_NETWORK_TIME = 1000;
 
@@ -33,30 +35,5 @@ export function search({ keyword }) {
   if (!keyword) {
     return failure(`Payload was ${keyword}`, 'error');
   }
-  return success([
-    {
-      wordId: 1,
-      userId: 1,
-      langCode: 2,
-      wordTypeCode: 3,
-      word: 'hey',
-      pronounciation: 'hey',
-      declension: null,
-      description: 'tervitus',
-      translation: 'tere',
-      example: 'hey lorem ipsum dolor sit amet',
-    },
-    {
-      wordId: 2,
-      userId: 1,
-      langCode: 1,
-      wordTypeCode: 3,
-      word: 'what',
-      pronounciation: 'what',
-      declension: null,
-      description: 'küsimus',
-      translation: 'mida',
-      example: 'mida lorem ipsum dolor sit amet',
-    },
-  ]);
+  return success(searchJson);
 }

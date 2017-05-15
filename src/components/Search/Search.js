@@ -5,7 +5,7 @@ import classNames from 'classnames';
 
 import './Search.scss';
 
-import Loader from '../../../components/Loader';
+import Loader from '../Loader';
 
 class Search extends Component {
   onSubmit = (event) => {
