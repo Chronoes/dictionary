@@ -6,11 +6,11 @@ const MIN_NETWORK_TIME = 20;
 const MAX_NETWORK_TIME = 1000;
 
 function simulateNetworkConnection(callback) {
-  setTimeout(callback, MIN_NETWORK_TIME + Math.floor(Math.random() * ((MAX_NETWORK_TIME - MIN_NETWORK_TIME) + 1)));
+  setTimeout(callback, MIN_NETWORK_TIME + Math.floor(Math.random() * (MAX_NETWORK_TIME - MIN_NETWORK_TIME + 1)));
 }
 
 function success(payload) {
-  return new Promise((resolve) => {
+  return new Promise(resolve => {
     simulateNetworkConnection(() => {
       resolve({
         ok: true,
@@ -35,5 +35,6 @@ export function search({ keyword }) {
   if (!keyword) {
     return failure(`Payload was ${keyword}`, 'error');
   }
+  console.log(searchJson);
   return success(searchJson);
 }

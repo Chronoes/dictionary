@@ -10,8 +10,7 @@ import { Route } from 'react-router';
 
 import './index.scss';
 import reducers from './reducers';
-import { Home } from './pages';
-
+import { Home, Admin } from './pages';
 
 const history = createHistory();
 
@@ -41,7 +40,11 @@ function render() {
   ReactDOM.render(
     <Provider store={store}>
       <Router history={history}>
-        <Route exact path="/" component={Home} />
+        <div>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/admin" component={Admin} />
+          <Route path="/admin/word/:wordId" component={Admin} />
+        </div>
       </Router>
     </Provider>,
     document.getElementById('root'),
