@@ -1,4 +1,7 @@
 import React, { Component, PropTypes as Types } from 'react';
+import { List } from 'immutable';
+
+import Select from '../../../components/Select';
 
 class WordForm extends Component {
   onSubmit = event => {
@@ -19,7 +22,11 @@ class WordForm extends Component {
         </fieldset>
         <fieldset className="form-group">
           <label htmlFor="word-language">Keel</label>
-          <input type="text" id="word-language" className="form-control" value={word.language} />
+          <Select
+            id="word-language"
+            options={new List([{ value: 1, label: 'eesti' }, { value: 2, label: 'sörve' }])}
+            value={word.language}
+          />
         </fieldset>
         <fieldset className="form-group">
           <label htmlFor="word-type">Tüüp</label>
