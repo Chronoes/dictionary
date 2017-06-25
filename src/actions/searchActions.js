@@ -7,7 +7,7 @@ export function updateSearchForm(key, value) {
 export function sendSearchForm({ searchBox }) {
   return (dispatch) => {
     dispatch({ type: 'SEND_SEARCH_FORM' });
-    return api.search({ keyword: searchBox })
+    return api.search({ lang_code: 2, keyword: searchBox })
     .then((res) => res.json())
     .then((results) => dispatch({ type: 'SEND_SEARCH_FORM_SUCCESS', results }))
     .catch(({ message, token }) => dispatch({ type: 'SEND_SEARCH_FORM_FAILURE', error: message, token }));

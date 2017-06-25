@@ -1,5 +1,5 @@
 import React, { Component, PropTypes as Types } from 'react';
-import { List } from 'immutable';
+import { Map, Collection } from 'immutable';
 
 import Select from '../../../components/Select';
 
@@ -9,7 +9,7 @@ class WordForm extends Component {
   };
 
   render() {
-    const { word } = this.props;
+    const { word, languages } = this.props;
     return (
       <form onSubmit={this.onSubmit}>
         <fieldset className="form-group">
@@ -23,8 +23,8 @@ class WordForm extends Component {
         <fieldset className="form-group">
           <label htmlFor="word-language">Keel</label>
           <Select
-            id="word-language"
-            options={new List([{ value: 1, label: 'eesti' }, { value: 2, label: 'sörve' }])}
+            inputProps={{ id: 'word-language' }}
+            options={languages.map(lang => new Map({ label: lang.get('name'), value: lang.get('langCode') }))}
             value={word.language}
           />
         </fieldset>
@@ -65,6 +65,7 @@ class WordForm extends Component {
 
 WordForm.propTypes = {
   word: Types.object.isRequired,
+  languages: Types.instanceOf(Collection.Indexed).isRequired,
 };
 
 export default WordForm;

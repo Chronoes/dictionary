@@ -1,6 +1,6 @@
 import Api from './Api';
 
-const api = new Api(window.location.origin, '/api', () => ({
+const api = new Api(window.location.origin, '/api/v1', () => ({
   credentials: 'include',
   headers: {
     Authorization: `Bearer ${window.localStorage.getItem('token')}`,
@@ -8,6 +8,6 @@ const api = new Api(window.location.origin, '/api', () => ({
 }));
 
 
-export function search({ keyword }) {
-  return api.fetch('/search', { query: { keyword } });
+export function search({ keyword, lang_code }) {
+  return api.fetch('/words', { query: { keyword, lang_code } });
 }

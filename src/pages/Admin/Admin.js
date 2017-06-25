@@ -1,7 +1,7 @@
 import React, { PropTypes as Types } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { Map } from 'immutable';
+import { Collection, fromJS } from 'immutable';
 
 import * as searchActions from '../../actions/searchActions';
 
@@ -12,7 +12,7 @@ function Admin({ search, actions, match }) {
   if (match.params.wordId) {
     return (
       <div className="container">
-        <WordForm word={{}} />
+        <WordForm word={{}} languages={fromJS([{ langCode: 1, name: 'eesti' }, { langCode: 2, name: 'sörve' }])} />
       </div>
     );
   }
@@ -25,7 +25,7 @@ function Admin({ search, actions, match }) {
 }
 
 Admin.propTypes = {
-  search: Types.instanceOf(Map).isRequired,
+  search: Types.instanceOf(Collection.Keyed).isRequired,
   actions: Types.shape({
     search: Types.objectOf(Types.func),
   }).isRequired,

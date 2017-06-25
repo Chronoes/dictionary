@@ -19,10 +19,10 @@ class Search extends Component {
     this.props.actions.updateSearchForm(name, value);
   };
 
-  renderItem = ({ wordId, type, word, pronounciation, declension, translation, description }) => {
+  renderItem = ({ word_id, type, word, pronounciation, declension, translation, description }) => {
     const { extended } = this.props;
     return (
-      <ItemWrapper key={wordId} linkHref={`/admin/word/${wordId}`} extended={extended}>
+      <ItemWrapper key={word_id} linkHref={`/admin/word/${word_id}`} extended={extended}>
         <section>
           <header className="word-header">
             <h5 className="word-title">{word}</h5>
